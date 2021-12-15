@@ -3,19 +3,17 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('exams_api/fonte/<int:pk>/', views.FonteUpdate.as_view(), name='fonte-update'),
-    url(r'^exams_api/fonte/$', views.FonteList.as_view(), name='fonte-list'),
+    path('exams_api/source/<int:pk>/', views.SourceUpdate.as_view(), name='source-update'),
+    url(r'^exams_api/source/$', views.SourceList.as_view(), name='source-list'),
 
-    path('exams_api/assunto/<int:pk>/', views.AssuntoUpdate.as_view(), name='assunto-update'),
-    url(r'^exams_api/assunto/$', views.AssuntoList.as_view(), name='assunto-list'),
+    path('exams_api/topic/<int:pk>/', views.TopicUpdate.as_view(), name='topic-update'),
+    url(r'^exams_api/topic/$', views.TopicList.as_view(), name='topic-list'),
 
-    url(r'^exams_api/tipoassunto/$', views.TipoAssuntoList.as_view(), name='tipoassunto-list'),
+    path('exams_api/question/<int:pk>/', views.QuestionUpdate.as_view(), name='question-update'),
+    path('exams_api/question/', views.QuestionList.as_view(), name='question-list'),
 
-    path('exams_api/questao/<int:pk>/', views.QuestaoUpdate.as_view(), name='questao-update'),
-    path('exams_api/questao/', views.QuestaoList.as_view(), name='questao-list'),
-
-    path('exams_api/alternativas/<int:pk>/', views.AlternativasUpdate.as_view(), name='alternativas-update'),
-    url(r'^exams_api/alternativas/$', views.AlternativasList.as_view(), name='alternativas-list'),
+    path('exams_api/alternatives/<int:pk>/', views.AlternativesUpdate.as_view(), name='alternatives-update'),
+    url(r'^exams_api/alternatives/$', views.AlternativesList.as_view(), name='alternatives-list'),
 ]
 
 

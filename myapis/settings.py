@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -40,8 +41,15 @@ INSTALLED_APPS = [
     'exams_api',
     'gardens_api',
     'rest_framework',
-    'taggit',
+    'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'rest_auth',
+    'rest_auth.registration',
+    "drf_spectacular",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,14 +59,24 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware', # CORS is necessary to deploy -----------
+    'django.middleware.common.CommonMiddleware', # CORS is necessary to deploy -----------
 ]
+
+# CORS is necessary to deploy -----------
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'http://127.0.0.1:8000',
+]
+# CORS is necessary to deploy -----------
 
 ROOT_URLCONF = 'myapis.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,4 +155,13 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATABASE_ROUTERS = ['exams_api.router.ExamsRouter', 'gardens_api.router.GardensRouter']
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
 

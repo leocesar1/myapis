@@ -17,8 +17,23 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
 
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 urlpatterns = [
     url(r'^', include('exams_api.urls')),
     url(r'^', include('gardens_api.urls')),
     path('admin/', admin.site.urls),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "docs/",
+        SpectacularSwaggerView.as_view(
+            template_name="swagger-ui.html", url_name="schema"
+        ),
+        name="swagger-ui",
+    ),
+]
+
+urlpatterns += [
+    path('rest_auth/', include('rest_auth.urls')),
+    path('rest_auth/registration/',      include('rest_auth.registration.urls'))
 ]

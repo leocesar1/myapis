@@ -1,27 +1,23 @@
 from rest_framework import serializers
-from .models import *
+from .models.models_Question import *
+from .models.models_Alternatives import *
 
-class FonteSerializer(serializers.ModelSerializer):
+class SourceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Fonte
+        model = Source
         fields = '__all__'
 
-class AssuntoSerializer(serializers.ModelSerializer):
+class TopicSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Assunto
+        model = Topic
         fields = '__all__'
 
-class TipoAssuntoSerializer(serializers.ModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TipoAssunto
+        model = Question
         fields = '__all__'
 
-class QuestaoSerializer(serializers.ModelSerializer):
+class AlternativesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Questao
-        fields = '__all__'
-
-class AlternativasSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Alternativas
+        model = Alternatives
         fields = '__all__'

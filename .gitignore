@@ -1,1 +1,5 @@
 /venv
+default.sqlite3
+examples.sqlite3
+gardens.sqlite3
+default.sqlite3

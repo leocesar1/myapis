@@ -1,40 +1,46 @@
 from rest_framework import generics
-from .models import *
-from .serializers import AlternativasSerializer, AssuntoSerializer, FonteSerializer, QuestaoSerializer, TipoAssuntoSerializer
+# from .models import *
+from .serializers import *
+
+from rest_framework import permissions
 
 # Create your views here.
-class FonteList(generics.ListCreateAPIView):
-    queryset = Fonte.objects.all()
-    serializer_class = FonteSerializer
+class SourceList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Source.objects.all()
+    serializer_class = SourceSerializer
 
-class FonteUpdate(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Fonte.objects.all()
-    serializer_class = FonteSerializer
+class SourceUpdate(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Source.objects.all()
+    serializer_class = SourceSerializer
 
-class AssuntoList(generics.ListCreateAPIView):
-    queryset = Assunto.objects.all()
-    serializer_class = AssuntoSerializer
+class TopicList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
 
-class AssuntoUpdate(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Assunto.objects.all()
-    serializer_class = AssuntoSerializer
+class TopicUpdate(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
 
-class TipoAssuntoList(generics.ListCreateAPIView):
-    queryset = TipoAssunto.objects.all()
-    serializer_class = TipoAssuntoSerializer
+class QuestionList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
-class QuestaoList(generics.ListCreateAPIView):
-    queryset = Questao.objects.all()
-    serializer_class = QuestaoSerializer
+class QuestionUpdate(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
-class QuestaoUpdate(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Questao.objects.all()
-    serializer_class = QuestaoSerializer
+class AlternativesList(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Alternatives.objects.all()
+    serializer_class = AlternativesSerializer
 
-class AlternativasList(generics.ListCreateAPIView):
-    queryset = Alternativas.objects.all()
-    serializer_class = AlternativasSerializer
-
-class AlternativasUpdate(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Alternativas.objects.all()
-    serializer_class = AlternativasSerializer
+class AlternativesUpdate(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Alternatives.objects.all()
+    serializer_class = AlternativesSerializer
