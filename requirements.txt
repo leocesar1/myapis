@@ -21,7 +21,7 @@ httplib2==0.14.0
 idna==2.8
 importlib-resources==5.4.0
 inflection==0.5.1
-jsonschema==4.3.0
+jsonschema==4.0.0
 keyring==18.0.1
 language-selector==0.1
 launchpadlib==1.10.13
