@@ -1,7 +1,6 @@
 cryptography==2.8
 Django==3.2
 django-allauth==0.47.0
-django-cors-headers==3.7.0
 django-rest-auth==0.9.5
 djangorestframework==3.12.4
 drf-spectacular==0.21.0

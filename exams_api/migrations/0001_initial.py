@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import taggit.managers
 
 
 class Migration(migrations.Migration):
@@ -69,7 +68,6 @@ class Migration(migrations.Migration):
                 ('questao_fig', models.ImageField(blank=True, upload_to='figures/tratamento')),
                 ('resolucao_fig', models.ImageField(blank=True, upload_to='figures/tratamento')),
                 ('assunto_princ', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='exams_api.assunto')),
-                ('assuntos_sec', taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags')),
                 ('fonte', models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='exams_api.fonte')),
             ],
             options={
