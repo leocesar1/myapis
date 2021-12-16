@@ -1,4 +1,6 @@
 from django.db import models
+from rest_framework.response import Response
+from rest_framework.validators import ValidationError
 
 class Source(models.Model):
     name = models.CharField(max_length=30)
@@ -6,12 +8,7 @@ class Source(models.Model):
 
     class Meta:
         ordering = ['name', 'year']
-    
-    def save(self, *args, **kwargs):
-        if not Source.objects.filter(name= self.name, year= self.year ):
-            super().save(*args, **kwargs)
-        else:
-            return "This source is already in the database."
+        unique_together = ('name', 'year',)
 
     def __str__(self):
         return "%s - %s" % (self.name.upper(), self.year)
